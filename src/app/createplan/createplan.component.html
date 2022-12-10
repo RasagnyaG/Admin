@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="container">
+  <div class="content">
+    <a (click)="back()">
+      <p style="color: #706361; display: block">< Back</p>
+    </a>
+    <h2>Create Plan</h2>
+    <div class="card">
+      <h3>Plan details</h3>
+      <p class="desc">Details to be displayed in the customer hosted pages</p>
+      <hr />
+      <div class="inp">
+        <div class="row-inp">
+          <div class="inp">
+            <label for="name">Plan Name</label>
+            <input type="text" name="name" id="name" size="45" />
+          </div>
+          <div class="inp">
+            <label for="code">Plan ID</label>
+            <input type="text" name="code" id="code" size="45" />
+          </div>
+        </div>
+        <div class="inp">
+          <label for="description">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="10"
+            rows="8"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex">
+      <button type="submit" class="btn-dark">Save</button>
+      <button class="btn-light" (click)="back()">Cancel</button>
+    </div>
+  </div>
+</div>

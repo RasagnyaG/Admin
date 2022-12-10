@@ -1,0 +1,98 @@
+<app-header></app-header>
+<div class="container">
+  <div class="content">
+    <a (click)="back()">
+      <p style="color: #706361; display: block">< Back</p>
+    </a>
+    <h2>Create Coupons</h2>
+    <div class="card">
+      <h3>Coupons details</h3>
+      <p class="desc">Details to be displayed in the customer hosted pages</p>
+      <hr />
+      <div class="inp">
+        <div class="row-inp">
+          <div class="inp">
+            <label for="name">Coupon Name</label>
+            <input type="text" name="name" id="name" size="45" />
+          </div>
+          <div class="inp">
+            <label for="code">Coupon Code</label>
+            <input type="text" name="code" id="code" size="45" />
+          </div>
+        </div>
+        <div class="inp">
+          <label for="description">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="10"
+            rows="8"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Coupon Configuration</h3>
+      <hr />
+      <div class="row-inp">
+        <div class="inp">
+          <label for="discount">Discount</label>
+          <input type="text" name="discount" id="discount" size="30" />
+        </div>
+        <div class="inp">
+          <label for="percentage"></label>
+          <select
+            name="percentage"
+            id="percentage"
+            style="margin-top: 18px; width: 200px"
+          >
+            <option value="percentage">Percentage</option>
+          </select>
+        </div>
+      </div>
+      <div class="inp">
+        <label for="plan">Associated Plan</label>
+        <select name="plan" id="plan" style="width: 318px">
+          <option value="plan"></option>
+        </select>
+      </div>
+      <hr />
+      <div class="inp">
+        <label for="duration">Duration</label>
+        <input
+          type="text"
+          name="duration"
+          id="duration"
+          size="45"
+          style="width: 310px"
+        />
+      </div>
+      <p style="margin-top: 20px">Redemption limits</p>
+      <div class="radio">
+        <input
+          type="radio"
+          name="redemption"
+          id="date"
+          value="date"
+          [(ngModel)]="redemption"
+        />
+        <label for="date" class="radio-label">Date Range</label>
+      </div>
+      <div class="radio">
+        <input
+          type="radio"
+          name="redemption"
+          id="total"
+          value="total"
+          [(ngModel)]="redemption"
+        />
+        <label for="total" class="radio-label">Total number of times</label>
+      </div>
+      <input type="number" *ngIf="redemption == 'total'" />
+    </div>
+    <div style="display: flex">
+      <button type="submit" class="btn-dark">Save</button>
+      <button class="btn-light" (click)="back()">Cancel</button>
+    </div>
+  </div>
+</div>
