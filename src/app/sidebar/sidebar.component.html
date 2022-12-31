@@ -1,1 +1,20 @@
-<p>sidebar works!</p>
+<div class="sidebar">
+  <div class="logo" style="text-align: center">
+    <img src="link" alt="" />
+    <h1 class="logo">
+      <span style="font-family: 'Roboto'; font-weight: 600; margin-right: 8px"
+        >Chargely
+      </span>
+      Admin
+    </h1>
+  </div>
+  <a routerLink="/dashboard" class="side-comp">Dashboard</a>
+  <p class="side-comp" (click)="toggle()" style="display: inline">
+    Configure <i class="arrow down"></i>
+  </p>
+  <div *ngIf="dropdown" style="margin-left: 40px" class="drop">
+    <a routerLink="/plans" class="side-comp drop-comp"> Plans </a>
+    <a routerLink="/coupons" class="side-comp drop-comp"> Coupons </a>
+    <a routerLink="/billing" class="side-comp drop-comp"> Billing </a>
+  </div>
+</div>

@@ -13,11 +13,41 @@
         <div class="row-inp">
           <div class="inp">
             <label for="name">Plan Name</label>
-            <input type="text" name="name" id="name" size="45" />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              size="45"
+              [(ngModel)]="plan_name"
+              ngModel
+              #name="ngModel"
+              required
+            />
+            <p
+              class="error"
+              *ngIf="(name.touched || submitted) && name.errors?.['required']"
+            >
+              Plan Name is required
+            </p>
           </div>
           <div class="inp">
             <label for="code">Plan ID</label>
-            <input type="text" name="code" id="code" size="45" />
+            <input
+              type="text"
+              name="code"
+              id="code"
+              size="45"
+              [(ngModel)]="plan_id"
+              ngModel
+              #code="ngModel"
+              required
+            />
+            <p
+              class="error"
+              *ngIf="(code.touched || submitted) && code.errors?.['required']"
+            >
+              Plan ID is required
+            </p>
           </div>
         </div>
         <div class="inp">
@@ -27,13 +57,211 @@
             id="description"
             cols="10"
             rows="8"
+            [(ngModel)]="description"
           ></textarea>
         </div>
       </div>
     </div>
+    <div class="card">
+      <h3>Plan Configuration</h3>
+      <hr />
+      <p class="sub-head">Free Trial</p>
+      <p class="desc">Do you want your customers to have free trial?</p>
+      <div class="row-inp">
+        <div class="inp">
+          <label for="trial">Trial Length</label>
+          <input
+            type="number"
+            name="free"
+            id="trial"
+            size="30"
+            [(ngModel)]="trial"
+            ngModel
+            #free="ngModel"
+            required
+          />
+          <p
+            class="error"
+            *ngIf="(free.touched || submitted) && free.errors?.['required']"
+          >
+            Trial Period is required.<br />
+            If you do not offer free trial, please enter 0
+          </p>
+        </div>
+        <div class="inp">
+          <label for="day"></label>
+          <select
+            name="day"
+            id="day"
+            style="margin-top: 18px; width: 150px"
+            [(ngModel)]="trial_type"
+          >
+            <option value="Days">Days</option>
+            <option value="Weeks">Weeks</option>
+            <option value="Months">Months</option>
+            <option value="Years">Years</option>
+          </select>
+        </div>
+      </div>
+      <hr />
+      <p class="sub-head">Users</p>
+      <p class="desc">No of users who can have access to portal</p>
+      <div class="inp">
+        <label for="usernumber">No of Users</label>
+        <input
+          type="number"
+          name="usernumber"
+          id="usernumber"
+          style="width: 205px"
+          [(ngModel)]="user_num"
+          ngModel
+          #usernumber="ngModel"
+          required
+        />
+        <p
+          class="error"
+          *ngIf="(usernumber.touched || submitted) && usernumber.errors?.['required']"
+        >
+          Number of users must be specified
+        </p>
+      </div>
+      <hr />
+      <p class="sub-head">Setup Fee</p>
+      <p class="desc">One time setup fee for your customers</p>
+      <div class="inp">
+        <label for="setup">Setup Pricing</label>
+        <input
+          type="number"
+          name="setup"
+          id="setup"
+          style="width: 205px"
+          [(ngModel)]="setup_fee"
+          ngModel
+          #setup="ngModel"
+          required
+        />
+        <p
+          class="error"
+          *ngIf="(setup.touched || submitted) && setup.errors?.['required']"
+        >
+          Setup Fee is required
+        </p>
+      </div>
+      <hr />
+      <p class="sub-head">Add Overage</p>
+      <p class="desc">Add overage percentage for your customers</p>
+      <div class="inp">
+        <label for="percent">Overage Percentage</label>
+        <input
+          type="number"
+          name="percent"
+          id="percent"
+          style="width: 205px"
+          [(ngModel)]="overage"
+          ngModel
+          #percent="ngModel"
+          required
+        />
+        <p
+          class="error"
+          *ngIf="(percent.touched || submitted) && percent.errors?.['required']"
+        >
+          Overage Percentage is required
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Billing Configuration</h3>
+      <p class="desc">Choose how frequently you would want to bill</p>
+      <hr />
+      <div class="row-inp">
+        <div class="inp">
+          <label for="billing">Billing Every</label>
+          <input
+            type="text"
+            name="billing"
+            id="billing"
+            size="30"
+            [(ngModel)]="billing_every"
+            ngModel
+            #billing="ngModel"
+            required
+          />
+          <p
+            class="error"
+            *ngIf="(billing.touched || submitted) && billing.errors?.['required']"
+          >
+            Billing frequency must be specified
+          </p>
+        </div>
+        <div class="inp">
+          <label for="day"></label>
+          <select
+            name="day"
+            id="day"
+            style="margin-top: 18px; width: 150px"
+            [(ngModel)]="billing_type"
+          >
+            <option value="Days">Daily</option>
+            <option value="Weeks">Weekly</option>
+            <option value="Months">Monthly</option>
+            <option value="Years">Yearly</option>
+          </select>
+        </div>
+      </div>
+      <div class="inp">
+        <label for="pricing">Pricing*</label>
+        <input
+          type="number"
+          name="pricing"
+          id="pricing"
+          style="width: 205px"
+          [(ngModel)]="price"
+          ngModel
+          #pricing="ngModel"
+          required
+        />
+        <p
+          class="error"
+          *ngIf="(pricing.touched || submitted) && pricing.errors?.['required']"
+        >
+          Price is required
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Specifications</h3>
+      <p class="desc">Add specificaions that has to be displayed</p>
+      <hr />
+      <p style="font-size: 16px; margin-top: 15px">Specifications</p>
+      <div class="row-inp" style="margin: 10px; margin-left: 0">
+        <input type="text" name="spec1" id="spec-1" size="70" />
+        <select
+          name="spec-sel"
+          id="sel-1"
+          style="margin-left: 10px; width: 70px"
+        >
+          <option value="input">Input</option>
+        </select>
+      </div>
+      <div class="row-inp" style="margin: 10px; margin-left: 0">
+        <input type="text" name="spec2" id="spec-2" size="70" />
+        <select
+          name="spec-sel"
+          id="sel-1"
+          style="margin-left: 10px; width: 70px"
+        >
+          <option value="input">Input</option>
+        </select>
+      </div>
+      <button class="desc txt-btn" style="background: none; border: none">
+        + Add Specification
+      </button>
+    </div>
     <div style="display: flex">
-      <button type="submit" class="btn-dark">Save</button>
+      <button type="submit" class="btn-dark" (click)="create()">Save</button>
       <button class="btn-light" (click)="back()">Cancel</button>
     </div>
+    <p class="error" *ngIf="err">{{ err }}</p>
   </div>
 </div>

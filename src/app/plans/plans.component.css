@@ -1,0 +1,33 @@
+th {
+    background-color: #3D0F92;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    padding: 10px;
+    text-align: center;
+
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+td{
+    font-family: 'Lato';
+    font-size: 16px;
+    color: black;
+    padding: 15px;
+    text-align: center;
+}
+.table{
+    background-color: #F6F6F6;
+    border: 1px solid #643CAF;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 30px;
+    min-height: 390px;
+}
+table tr {
+    border-bottom: 1px solid #643CAF;
+}

@@ -1,0 +1,55 @@
+.card{
+    border-radius: 20px;
+    border: 1px solid #DDDDDD;
+    width : fit-content;
+    padding: 0;
+    min-width: 220px;
+}
+p, th, td{
+    font-family: 'Noto Sans';
+    font-size: 14px;
+    font-weight: 300;
+}
+.head{
+    text-align: center;
+    color: #544B63;
+    margin: 13px;
+}
+hr {
+    width: 100%;
+    border: 0.5px solid #DDDDDD;
+    margin: 0;
+}
+.num{
+    float: right;
+}
+.data {
+    margin: 20px 25px;
+}
+.row-inp{
+    margin-top: 40px;
+    justify-content: space-evenly;
+}
+table{
+    margin: 0;
+    width: 100%;
+}
+table tr{
+    width: 100%;
+    justify-content: space-evenly;
+    text-align: center;
+    
+}
+table th{
+    text-align: center;
+}
+td{
+    padding: 3px 45px;
+}
+.rev{
+    padding: 20px;
+    font-size: 40px;
+    font-weight: 800;
+    color: #767676;
+}
+

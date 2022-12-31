@@ -1,0 +1,50 @@
+<div class="login">
+  <img src="" alt="icon" style="float: left; height: fit-content" />
+  <div class="deets">
+    <h2 style="font-family: 'Noto Sans'">Admin Login</h2>
+    <div class="form">
+      <label for="email" class="login-lab">Email id</label>
+      <div>
+        <input
+          type="text"
+          class="login-inp"
+          name="email"
+          size="50"
+          ngModel
+          required
+          [(ngModel)]="email_id"
+          #email="ngModel"
+          [ngClass]="(email.touched || submitted) && email.errors?.['required'] ? 'inp-err' : '' "
+        />
+        <p
+          class="error"
+          *ngIf="(email.touched || submitted) && email.errors?.['required']"
+        >
+          Email is required
+        </p>
+      </div>
+      <label for="password" class="login-lab">Password</label>
+      <div>
+        <input
+          type="password"
+          class="login-inp"
+          name="password"
+          size="50"
+          required
+          ngModel
+          [(ngModel)]="pass"
+          #password="ngModel"
+          [ngClass]="(password.touched || submitted) && password.errors?.['required'] ? 'inp-err' : '' "
+        />
+        <p
+          class="error"
+          *ngIf="(password.touched || submitted) && password.errors?.['required']"
+        >
+          Password is required
+        </p>
+      </div>
+    </div>
+    <button type="submit" class="login-btn" (click)="login()">Login</button>
+    <p class="error" *ngIf="err != ''" style="text-align: center">{{ err }}</p>
+  </div>
+</div>

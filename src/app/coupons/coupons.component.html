@@ -1,1 +1,37 @@
-<p>coupons works!</p>
+<div style="display: flex">
+  <app-sidebar></app-sidebar>
+  <div class="wrapper">
+    <div style="width: 100%">
+      <h2 style="margin: 0; float: left; font-size: 35px">Coupons</h2>
+      <button class="btn-dark" style="float: right" routerLink="/createcoupon">
+        + Create Coupons
+      </button>
+    </div>
+    <div class="table">
+      <table>
+        <tr>
+          <th style="color: transparent">active???</th>
+          <th>Promo Code</th>
+          <th>Terms</th>
+          <th>Redemptions</th>
+          <th>Expires</th>
+          <th style="color: transparent">settings</th>
+        </tr>
+        <tr *ngFor="let coupon of coupons">
+          <td>{{ coupon.active ? "ACTIVE" : "INACTIVE" }}</td>
+          <td>{{ coupon.code }}</td>
+          <td>
+            {{
+              coupon.type == "flat"
+                ? coupon.terms + " USD"
+                : coupon.terms + "% OFF"
+            }}
+          </td>
+          <td>{{ coupon.redemptions }}</td>
+          <td>{{ coupon.expiry }}</td>
+          <td><button class="txt-btn">. . .</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

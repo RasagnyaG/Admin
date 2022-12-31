@@ -9,6 +9,10 @@ import { CreateplanComponent } from './createplan/createplan.component';
 import { CreatecouponComponent } from './createcoupon/createcoupon.component';
 import { HeaderComponent } from './header/header.component';
 import { PlansComponent } from './plans/plans.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuardService } from './authguard.service';
 
 @NgModule({
   declarations: [
@@ -19,9 +23,11 @@ import { PlansComponent } from './plans/plans.component';
     CreatecouponComponent,
     HeaderComponent,
     PlansComponent,
+    DashboardComponent,
+    LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

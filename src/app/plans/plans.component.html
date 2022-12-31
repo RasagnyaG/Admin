@@ -1,1 +1,33 @@
-<p>plans works!</p>
+<div style="display: flex">
+  <app-sidebar></app-sidebar>
+  <div class="wrapper">
+    <div style="width: 100%">
+      <h2 style="margin: 0; float: left; font-size: 35px">plan</h2>
+      <button class="btn-dark" style="float: right" routerLink="/createplan">
+        + Create Plan
+      </button>
+    </div>
+    <div class="table">
+      <table>
+        <tr>
+          <th style="color: transparent">active???</th>
+          <th>Plan</th>
+          <th>Plan Code</th>
+          <th>Setup Fee</th>
+          <th>Price</th>
+          <th>Trial Period</th>
+          <th style="color: transparent">settings</th>
+        </tr>
+        <tr *ngFor="let plan of plans">
+          <td>{{ plan.active ? "ACTIVE" : "INACTIVE" }}</td>
+          <td>{{ plan.name }}</td>
+          <td>{{ plan.code }}</td>
+          <td>{{ plan.setupfee }}</td>
+          <td>{{ plan.price }}</td>
+          <td>{{ plan.trial + " " + plan.trialtype }}</td>
+          <td><button class="txt-btn">. . .</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

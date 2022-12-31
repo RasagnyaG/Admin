@@ -13,11 +13,41 @@
         <div class="row-inp">
           <div class="inp">
             <label for="name">Coupon Name</label>
-            <input type="text" name="name" id="name" size="45" />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              size="45"
+              [(ngModel)]="c_name"
+              ngModel
+              #name="ngModel"
+              required
+            />
+            <p
+              class="error"
+              *ngIf="(name.touched || submitted) && name.errors?.['required']"
+            >
+              Coupon Name is required
+            </p>
           </div>
           <div class="inp">
             <label for="code">Coupon Code</label>
-            <input type="text" name="code" id="code" size="45" />
+            <input
+              type="text"
+              name="code"
+              id="code"
+              size="45"
+              [(ngModel)]="c_code"
+              ngModel
+              #code="ngModel"
+              required
+            />
+            <p
+              class="error"
+              *ngIf="(code.touched || submitted) && code.errors?.['required']"
+            >
+              Coupon Code is required
+            </p>
           </div>
         </div>
         <div class="inp">
@@ -27,6 +57,9 @@
             id="description"
             cols="10"
             rows="8"
+            [(ngModel)]="desc"
+            ngModel
+            #description="ngModel"
           ></textarea>
         </div>
       </div>
@@ -37,7 +70,22 @@
       <div class="row-inp">
         <div class="inp">
           <label for="discount">Discount</label>
-          <input type="text" name="discount" id="discount" size="30" />
+          <input
+            type="text"
+            name="discount"
+            id="discount"
+            size="30"
+            [(ngModel)]="disc"
+            ngModel
+            #discount="ngModel"
+            required
+          />
+          <p
+            class="error"
+            *ngIf="(discount.touched || submitted) && discount.errors?.['required']"
+          >
+            Discount must be specified
+          </p>
         </div>
         <div class="inp">
           <label for="percentage"></label>
@@ -45,27 +93,42 @@
             name="percentage"
             id="percentage"
             style="margin-top: 18px; width: 200px"
+            [(ngModel)]="type"
           >
-            <option value="percentage">Percentage</option>
+            <option value="percentage" selected>Percentage</option>
+            <option value="flat">Flat</option>
           </select>
         </div>
       </div>
       <div class="inp">
         <label for="plan">Associated Plan</label>
-        <select name="plan" id="plan" style="width: 318px">
-          <option value="plan"></option>
+        <select name="plan" id="plan" style="width: 318px" [(ngModel)]="plan">
+          <option value="free" selected>Free</option>
+          <option value="basic">Basic</option>
+          <option value="pro">Pro</option>
+          <option value="enterprise">Enterprise</option>
         </select>
       </div>
       <hr />
       <div class="inp">
         <label for="duration">Duration</label>
         <input
-          type="text"
+          type="date"
           name="duration"
           id="duration"
           size="45"
           style="width: 310px"
+          [(ngModel)]="dur"
+          ngModel
+          #duration="ngModel"
+          required
         />
+        <p
+          class="error"
+          *ngIf="(duration.touched || submitted) && duration.errors?.['required']"
+        >
+          Expiry date must be specified
+        </p>
       </div>
       <p style="margin-top: 20px">Redemption limits</p>
       <div class="radio">
@@ -88,11 +151,45 @@
         />
         <label for="total" class="radio-label">Total number of times</label>
       </div>
-      <input type="number" *ngIf="redemption == 'total'" />
+      <input
+        name="t"
+        type="number"
+        *ngIf="redemption == 'total'"
+        [(ngModel)]="times"
+        min="0"
+      />
+      <div>
+        <div class="inp">
+          <label for="start" class="radio-label" *ngIf="redemption == 'date'"
+            >From</label
+          >
+          <input
+            name="start"
+            type="date"
+            *ngIf="redemption == 'date'"
+            [(ngModel)]="starttime"
+            style="width: 25%"
+          />
+        </div>
+        <div class="inp">
+          <label for="end" class="radio-label" *ngIf="redemption == 'date'"
+            >To</label
+          >
+          <input
+            name="start"
+            type="date"
+            *ngIf="redemption == 'date'"
+            [(ngModel)]="endtime"
+            style="width: 25%"
+          />
+        </div>
+      </div>
     </div>
+
     <div style="display: flex">
-      <button type="submit" class="btn-dark">Save</button>
+      <button type="submit" class="btn-dark" (click)="create()">Save</button>
       <button class="btn-light" (click)="back()">Cancel</button>
     </div>
+    <p class="error" *ngIf="err">{{ err }}</p>
   </div>
 </div>
